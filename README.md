@@ -128,6 +128,18 @@ $client->utility->verifyPaymentSignature($attributes);
 
 ```
 
+### Verifying webhook signature
+
+```php
+$client->utility->verifyWebhookSignature($payload,$actualSignature,$secret);
+
+// replayInterval is optional
+$client->utility->verifyWebhookSignature($payload,$actualSignature,$secret,$replayInterval);
+
+```
+
+
+
 ## Development
 
 Install dependencies:
