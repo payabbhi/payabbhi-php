@@ -13,7 +13,7 @@ Class Client
     // @var string The base URL for the Payabbhi API.
     public static $apiBase = "https://payabbhi.com";
 
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.1';
 
 
     /**
