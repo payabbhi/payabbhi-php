@@ -66,7 +66,6 @@ Class Client
     public function __get($name)
     {
         $className = __NAMESPACE__.'\\'.ucwords($name);
-
         $object = new $className();
 
         return $object;

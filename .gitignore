@@ -12,3 +12,6 @@ clover.xml
 
 # Ignore tests
 test.php
+
+bin
+*.phar
