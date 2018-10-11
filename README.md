@@ -18,7 +18,8 @@ The library can be installed via [Composer](http://getcomposer.org/). Run the fo
 $ composer require payabbhi/payabbhi-php
 ```
 
-In order to use the library, use Composer's [autoload](https://getcomposer.org/doc/00-intro.md#autoloading) feature:
+Start using the library as per Composer [autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
+simply include `vendor/autoload.php`, available as part of library installation via Composer.
 
 ```php
 require_once('vendor/autoload.php');
@@ -26,11 +27,14 @@ require_once('vendor/autoload.php');
 
 ## Manual Installation
 
-For manual installation, include `init.php` in your code.
+In case Composer is not used, download the latest release from [Releases](https://github.com/payabbhi/payabbhi-php/releases). 
+For using the manually downloaded library, simply include `init.php` in your code.
 
 ```php
 require_once('/path/to/payabbhi-php/init.php');
 ```
+
+For manual installation, make sure that the [dependencies](#dependencies) are resolved. 
 
 ## Documentation
 
