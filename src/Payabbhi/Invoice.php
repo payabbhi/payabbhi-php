@@ -61,6 +61,17 @@ Class Invoice extends ApiResource
         return self::_request('/api/v1/invoices/' . $id . '/line_items' , "GET", $params);
     }
 
+    /**
+     * @param array|null $params
+     *
+     * @return Collection of Payments
+     */
+    public function payments($id, $params = null)
+    {
+        $id = Util::utf8($id);
+        $extn = urlencode($id);
+        return self::_request('/api/v1/invoices/' . $id . '/payments' , "GET", $params);
+    }
 
     /**
      * @param array|null $params.
