@@ -46,7 +46,7 @@ Class Plan extends ApiResource
      */
     public function create($params)
     {
-        return $this->_request(static::classUrl(), "POST", $params);
+        return self::_request(static::classUrl(), "POST", $params);
     }
 
 }

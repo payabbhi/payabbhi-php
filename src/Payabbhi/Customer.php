@@ -61,7 +61,7 @@ Class Customer extends ApiResource
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        self::_request('/api/v1/customers/' . $extn , "PUT", $params);
+        self::_request(static::classUrl() . $extn , "PUT", $params);
         return self::retrieve($extn);
     }
 

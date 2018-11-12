@@ -58,7 +58,7 @@ Class Invoice extends ApiResource
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        return self::_request('/api/v1/invoices/' . $id . '/line_items' , "GET", $params);
+        return self::_request(static::classUrl() . $id . '/line_items' , "GET", $params);
     }
 
     /**
@@ -70,7 +70,7 @@ Class Invoice extends ApiResource
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        return self::_request('/api/v1/invoices/' . $id . '/payments' , "GET", $params);
+        return self::_request(static::classUrl() . $id . '/payments' , "GET", $params);
     }
 
     /**
@@ -80,7 +80,7 @@ Class Invoice extends ApiResource
      */
     public function create($params)
     {
-        return $this->_request(static::classUrl(), "POST", $params);
+        return self::_request(static::classUrl(), "POST", $params);
     }
 
     /**
@@ -92,7 +92,7 @@ Class Invoice extends ApiResource
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        return self::_request('/api/v1/invoices/' . $extn . '/cancel' , "POST", $params);
+        return self::_request(static::classUrl() . $extn . '/cancel' , "POST", $params);
     }
 
 

@@ -27,7 +27,7 @@ Class Order extends ApiResource
      */
     public function retrieve($id)
     {
-        return $this->_retrieve($id);
+        return self::_retrieve($id);
     }
 
     /**
@@ -37,7 +37,7 @@ Class Order extends ApiResource
      */
     public function all($params = null)
     {
-        return $this->_all($params);
+        return self::_all($params);
 
     }
 
@@ -46,7 +46,7 @@ Class Order extends ApiResource
      */
     public function payments()
     {
-        return $this->_request(static::instanceUrl($this->getObjectIdentifier()) . "/payments", "GET",null);
+        return self::_request(static::instanceUrl($this->getObjectIdentifier()) . "/payments", "GET",null);
     }
 
     /**
@@ -56,6 +56,6 @@ Class Order extends ApiResource
      */
     public function create($params)
     {
-        return $this->_request(static::classUrl(), "POST", $params);
+        return self::_request(static::classUrl(), "POST", $params);
     }
 }
