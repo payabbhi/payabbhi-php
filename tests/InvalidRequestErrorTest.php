@@ -15,7 +15,7 @@ class InvalidRequestErrorTest extends PayabbhiTestCase
           $api->payment->retrieve("abcd")->refund();
        } catch (\Payabbhi\Error\InvalidRequest $e) {
          $this->assertEquals(400, $e->getHttpStatus());
-         $this->assertEquals("The request has invalid parameters",$e->getDescription());
+         $this->assertEquals("Invalid value provided in field",$e->getDescription());
          $this->assertEquals("message: Invalid value provided in field, http_code: 400, field: payment_id\n",$e->getMessage());
          $this->assertEquals("payment_id", $e->getField());
       }
