@@ -69,7 +69,7 @@ Class Subscription extends ApiResource
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        return self::_request('/api/v1/subscriptions/' . $extn . '/cancel' , "POST", $params);
+        return self::_request(static::classUrl() . '/' . $extn . '/cancel' , "POST", $params);
     }
 
 

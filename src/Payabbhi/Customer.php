@@ -49,7 +49,7 @@ Class Customer extends ApiResource
      */
     public function create($params)
     {
-        return $this->_request(static::classUrl(), "POST", $params);
+        return self::_request(static::classUrl(), "POST", $params);
     }
 
     /**
@@ -61,7 +61,7 @@ Class Customer extends ApiResource
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        self::_request(static::classUrl() . $extn , "PUT", $params);
+        self::_request(static::classUrl() . '/' . $extn , "PUT", $params);
         return self::retrieve($extn);
     }
 

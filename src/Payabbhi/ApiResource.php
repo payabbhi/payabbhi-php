@@ -54,13 +54,13 @@ Class ApiResource extends Resource implements ArrayableInterface
 
     protected function _retrieve($id)
     {
-        return $this->_request(static::instanceUrl($id), "GET", null);
+        return self::_request(static::instanceUrl($id), "GET", null);
     }
 
     protected function _all($params = null)
     {
         $this->_validateParams($params);
-        return $this->_request(static::classUrl(), "GET", $params);
+        return self::_request(static::classUrl(), "GET", $params);
     }
 
     /**
