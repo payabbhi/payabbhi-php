@@ -54,13 +54,13 @@ Class ApiResource extends Resource implements ArrayableInterface
 
     protected function _retrieve($id)
     {
-        return $this->_request(static::instanceUrl($id), "GET", null);
+        return self::_request(static::instanceUrl($id), "GET", null);
     }
 
     protected function _all($params = null)
     {
         $this->_validateParams($params);
-        return $this->_request(static::classUrl(), "GET", $params);
+        return self::_request(static::classUrl(), "GET", $params);
     }
 
     /**
@@ -96,7 +96,8 @@ Class ApiResource extends Resource implements ArrayableInterface
     {
         $results = array();
         foreach ($values as $k => $v) {
-            if ($v instanceof Collection || $v instanceof Order || $v instanceof Payment || $v instanceof Refund) {
+            if ($v instanceof Collection || $v instanceof Order || $v instanceof Payment || $v instanceof Refund
+            || $v instanceof Product || $v instanceof Plan|| $v instanceof Customer || $v instanceof Subscription || $v instanceof Invoice || $v instanceof InvoiceItem) {
                 $results[$k] = $v->__toArray(true);
             } elseif (is_array($v)) {
                 $results[$k] = self::convertObjectToArray($v);
@@ -145,6 +146,11 @@ Class ApiResource extends Resource implements ArrayableInterface
             'list',
             'payment',
             'refund',
+            'product',
+            'plan',
+            'customer',
+            'invoiceitem',
+            'subscription',
             'order');
     }
 
@@ -209,6 +215,9 @@ Class ApiResource extends Resource implements ArrayableInterface
 
     public static function isAssocArray($arr)
     {
+        if (count($arr) == 0) {
+            return false;
+        }
         return array_keys($arr) !== range(0, count($arr) - 1);
     }
 

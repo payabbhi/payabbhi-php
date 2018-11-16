@@ -113,6 +113,40 @@ class CurlClient
 
     /**
      * @param mixed $ch
+     * @param string $path
+     * @param null|array $params
+     * @return mixed json encoded body
+     * @throws Error\InvalidRequest
+     */
+    public static function buildPUTRequest($ch, $path, $params)
+    {
+        $url  = Client::baseUrl() . $path;
+        $body = json_encode($params);
+        switch (json_last_error()) {
+            case JSON_ERROR_NONE:
+                break;
+            default:
+                curl_close($ch);
+                throw new Error\InvalidRequest("Error in request payload formation");
+        }
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+    }
+
+    /**
+     * @param mixed $ch
+     * @param string $path
+     */
+    public static function buildDELETERequest($ch, $path)
+    {
+        $url  = Client::baseUrl() . $path;
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+    }
+
+    /**
+     * @param mixed $ch
      * @return string $url
      */
     public static function getPath($ch)
@@ -146,7 +180,7 @@ class CurlClient
      * @param null|array $params
      * @throws Error\Api
      */
-    private static function handleHTTPMethod($ch, $path, $method, $params)
+    public static function handleHTTPMethod($ch, $path, $method, $params)
     {
         switch ($method) {
             case "GET":
@@ -155,6 +189,14 @@ class CurlClient
                 break;
             case "POST":
                 self::buildPOSTRequest($ch, $path, $params);
+                self::signRequest($ch);
+                break;
+            case "PUT":
+                self::buildPUTRequest($ch, $path, $params);
+                self::signRequest($ch);
+                break;
+            case "DELETE":
+                self::buildDELETERequest($ch, $path);
                 self::signRequest($ch);
                 break;
             default:

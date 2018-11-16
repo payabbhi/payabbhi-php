@@ -91,7 +91,12 @@ class UtilityTest extends TestCase
     {
       $api = new \Payabbhi\Client("BKa70BUicoKuQnZ6_ZSOJIWbi6nCO8mL83-4DJTcxdU=", "exq4JxHbTtMS9IM5hnoPNkdMXKW-ws36y4RgGtzGeGg=");
       $this->assertSame($api->utility->verifySignature('pay_123&order_test', '31b8de6a27e9911fe8828d80fda4c2c7cefdf332c06eeaa734a0708af6cafd87',"exq4JxHbTtMS9IM5hnoPNkdMXKW-ws36y4RgGtzGeGg="),true);
+    }
 
+    public function testhashEqualsError()
+    {
+      $api = new \Payabbhi\Client("BKa70BUicoKuQnZ6_ZSOJIWbi6nCO8mL83-4DJTcxdU=", "exq4JxHbTtMS9IM5hnoPNkdMXKW-ws36y4RgGtzGeGg=");
+      $this->assertFalse($api->utility->hashEquals(123,123));
     }
 
 }

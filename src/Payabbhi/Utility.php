@@ -36,7 +36,6 @@ class Utility
         $final[$key] = $value;
       });
 
-      $diff = time() - (int)$final["t"];
       if (array_key_exists("v1", $final) == false  || array_key_exists("t", $final) == false
         || time() - (int)$final["t"] > $replayInterval)
       {
@@ -47,7 +46,7 @@ class Utility
       return self::verifySignature($canonicalString, $final["v1"], $secret);
     }
 
-    private function hashEquals($actualSignature, $expectedSignature)
+    public function hashEquals($actualSignature, $expectedSignature)
     {
       if (!is_string($actualSignature) || !is_string($expectedSignature)) {
            return false;
