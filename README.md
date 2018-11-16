@@ -142,6 +142,21 @@ $client->utility->verifyWebhookSignature($payload,$actualSignature,$secret,$repl
 
 ```
 
+### Customers
+
+Refer to [PHP Lib Docs](https://payabbhi.com/docs/api/?php)
+
+### Invoices
+
+Refer to [PHP Lib Docs](https://payabbhi.com/docs/api/?php)
+
+### Subscriptions, Products, Plans
+
+Refer to [PHP Lib Docs](https://payabbhi.com/docs/api/?php)
+
+### Transfers
+
+Refer to [PHP Lib Docs](https://payabbhi.com/docs/api/?php)
 
 
 ## Development
