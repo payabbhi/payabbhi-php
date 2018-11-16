@@ -2,60 +2,51 @@
 namespace Payabbhi;
 
 /**
- * Class Order
+ * Class Plan
  *
  * @property string $id
  * @property string $object
+ * @property string $product_id
+ * @property string $name
  * @property int $amount
  * @property string $currency
- * @property string $merchant_order_id
- * @property string $status
- * @property int payment_attempts
+ * @property int $frequency
+ * @property string $interval
  * @property mixed $notes
  * @property int $created_at
  *
  * @package Payabbhi
  */
 
-Class Order extends ApiResource
+Class Plan extends ApiResource
 {
-
     /**
-     * @param string $id The ID of the order to retrieve.
+     * @param string $id The ID of the plan to retrieve.
      *
-     * @return Order
+     * @return Plan
      */
     public function retrieve($id)
     {
         return self::_retrieve($id);
     }
-
     /**
      * @param array|null $params
      *
-     * @return Collection of Orders
+     * @return Collection of Plan
      */
     public function all($params = null)
     {
         return self::_all($params);
-
-    }
-
-    /**
-     * @return Collection of Payments
-     */
-    public function payments()
-    {
-        return self::_request(static::instanceUrl($this->getObjectIdentifier()) . "/payments", "GET",null);
     }
 
     /**
      * @param array|null $params.
      *
-     * @return Order
+     * @return Plan
      */
     public function create($params)
     {
         return self::_request(static::classUrl(), "POST", $params);
     }
+
 }

@@ -10,7 +10,6 @@ class PayabbhiTestCase extends \PHPUnit_Framework_TestCase
 {
   protected static function authorizeFromEnv()
       {
-        // \Payabbhi\Payabbhi::$apiBase = "https://payabbhi.com";
         $accessID = getenv('ACCESS_ID');
         $secretKey = getenv('SECRET_KEY');
         $api = new \Payabbhi\Client($accessID,$secretKey);

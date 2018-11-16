@@ -42,6 +42,55 @@ class CurlClientTest extends TestCase
 
       }
 
+      public function testHTTPPOSTMethod()
+      {
+        $ch = curl_init();
+        $base = \Payabbhi\Client::baseUrl();
+        \Payabbhi\Client::$apiBase = "https://payabbhi.com";
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+        CurlClient::handleHTTPMethod($ch,"/api/v1/check","POST", null);
+        curl_exec($ch);
+        $url     = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        \Payabbhi\Client::$apiBase = $base;
+        $this->assertEquals($url,"https://payabbhi.com/api/v1/check");
+        $this->assertEquals(0,strpos(curl_getinfo($ch)["request_header"],"POST"));
+      }
+
+      public function testHTTPPUTMethod()
+      {
+        $ch = curl_init();
+        $base = \Payabbhi\Client::baseUrl();
+        \Payabbhi\Client::$apiBase = "https://payabbhi.com";
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+        CurlClient::handleHTTPMethod($ch,"/api/v1/check","PUT", null);
+        curl_exec($ch);
+        $url     = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        \Payabbhi\Client::$apiBase = $base;
+        $this->assertEquals($url,"https://payabbhi.com/api/v1/check");
+        $this->assertEquals(0,strpos(curl_getinfo($ch)["request_header"],"PUT"));
+
+      }
+
+
+      public function testHTTPDELETEMethod()
+      {
+        $ch = curl_init();
+        $base = \Payabbhi\Client::baseUrl();
+        \Payabbhi\Client::$apiBase = "https://payabbhi.com";
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+        CurlClient::handleHTTPMethod($ch,"/api/v1/check","DELETE", null);
+        curl_exec($ch);
+        $url     = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        \Payabbhi\Client::$apiBase = $base;
+        $this->assertEquals($url,"https://payabbhi.com/api/v1/check");
+        $this->assertEquals(0,strpos(curl_getinfo($ch)["request_header"],"DELETE"));
+      }
+
+
+
       public function testUrlForGETRequestWithParams()
       {
         $ch = curl_init();
@@ -71,6 +120,72 @@ class CurlClientTest extends TestCase
         \Payabbhi\Client::$apiBase = $base;
         $this->assertEquals($url,"https://payabbhi.com/api/v1/check");
       }
+
+      public function testPUTRequestWithNoParams()
+      {
+        $ch = curl_init();
+        $base = \Payabbhi\Client::baseUrl();
+        \Payabbhi\Client::$apiBase = "https://payabbhi.com";
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+        CurlClient::buildPUTRequest($ch,"/api/v1/check",null);
+        curl_exec($ch);
+        $url     = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        \Payabbhi\Client::$apiBase = $base;
+        $this->assertEquals($url,"https://payabbhi.com/api/v1/check");
+        $this->assertEquals(0,strpos(curl_getinfo($ch)["request_header"],"PUT"));
+      }
+
+      public function testPUTRequestWithParams()
+      {
+        $ch = curl_init();
+        $base = \Payabbhi\Client::baseUrl();
+        \Payabbhi\Client::$apiBase = "https://payabbhi.com";
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+        $params = array('foo'=>'bar',
+                'baz'=>'boom',
+                'cow'=>'milk',
+                'php'=>'hypertext processor');
+        CurlClient::buildPUTRequest($ch,"/api/v1/check",$params);
+        curl_exec($ch);
+        $url     = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        \Payabbhi\Client::$apiBase = $base;
+        $this->assertEquals("https://payabbhi.com/api/v1/check",$url);
+        $this->assertEquals(0,strpos(curl_getinfo($ch)["request_header"],"PUT"));
+      }
+
+      public function testPUTRequestWithInvalidPayload()
+      {
+        try {
+          $ch = curl_init();
+          $params = "\xB1\x31";
+          CurlClient::buildPUTRequest($ch,"/api/v1/check",$params);
+        } catch (InvalidRequest $e){
+          $msg = "Error in request payload formation";
+          $this->assertNull($e->getHttpStatus());
+          $this->assertEquals($msg, $e->getDescription());
+          $this->assertEquals("message: $msg\n", $e->getMessage());
+          $this->assertNull($e->getField());
+        }
+      }
+
+      public function testDELETERequestWithNoParams()
+      {
+        $ch = curl_init();
+        $base = \Payabbhi\Client::baseUrl();
+        \Payabbhi\Client::$apiBase = "https://payabbhi.com";
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+        CurlClient::buildDELETERequest($ch,"/api/v1/check",null);
+        curl_exec($ch);
+        $url     = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        \Payabbhi\Client::$apiBase = $base;
+        $this->assertEquals($url,"https://payabbhi.com/api/v1/check");
+        $this->assertEquals(0,strpos(curl_getinfo($ch)["request_header"],"DELETE"));
+      }
+
+
 
       public function testUrlForPOSTRequestWithParams()
       {
@@ -152,10 +267,16 @@ class CurlClientTest extends TestCase
         return [
             ["","secret_key","GET"],
             ["","secret_key","POST"],
+            ["","secret_key","PUT"],
+            ["","secret_key","DELETE"],
             ["access_id","","GET"],
             ["access_id","","POST"],
+            ["access_id","","PUT"],
+            ["access_id","","DELETE"],
             ["","","GET"],
-            ["","","POST"]
+            ["","","POST"],
+            ["","","PUT"],
+            ["","","DELETE"]
         ];
       }
 
@@ -208,13 +329,6 @@ class CurlClientTest extends TestCase
         curl_exec($ch);
         $headerarray = self::parseHeader(curl_getinfo($ch,CURLINFO_HEADER_OUT));
         $this->assertRegExp('/Basic/', $headerarray['Authorization']);
-      }
-
-      public function testNullResultForParseResult()
-      {
-        $ch = curl_init();
-        curl_exec($ch);
-        $this->assertNull(CurlClient::parseResult($ch,null));
       }
 
       public function testJsonResultForParseResult()

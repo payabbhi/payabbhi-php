@@ -1,6 +1,10 @@
 # Change Log
 
-Changelog for payabbhi-php.
+Changelog for payabbhi-php
+
+## [1.0.2] - 2018-11-16
+### Added
+- Support for Subscription, Invoice, Product, Plan, Customer APIs
 
 ## [1.0.1] - 2018-09-12
 ### Added
