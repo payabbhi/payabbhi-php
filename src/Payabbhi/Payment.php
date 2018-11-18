@@ -68,6 +68,16 @@ Class Payment extends ApiResource
     }
 
     /**
+     * @param string $id The transfers of the payment ID to retrieve.
+     *
+     * @return collection of Transfers
+     */
+    public function transfers($params = null)
+    {
+        return self::_request(static::instanceUrl($this->getObjectIdentifier()) . "/transfers", "GET", $params);
+    }
+
+    /**
      * @param string $id The ID of the payment to capture.
      *
      * @return Payment
@@ -88,5 +98,17 @@ Class Payment extends ApiResource
         $refund->create($this->getObjectIdentifier(), $params);
         self::retrieve($this->getObjectIdentifier());
         return $refund;
+    }
+
+    /**
+     * @param array|null $params
+     *
+     * @return collection of Transfers
+     */
+    public function transfer($params = null)
+    {
+        $transfer = new Transfer;
+        $transfers = $transfer->create($this->getObjectIdentifier(), $params);
+        return $transfers;
     }
 }

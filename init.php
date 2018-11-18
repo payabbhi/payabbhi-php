@@ -35,5 +35,6 @@ require(dirname(__FILE__) . '/src/Payabbhi/Customer.php');
 require(dirname(__FILE__) . '/src/Payabbhi/Subscription.php');
 require(dirname(__FILE__) . '/src/Payabbhi/Invoice.php');
 require(dirname(__FILE__) . '/src/Payabbhi/InvoiceItem.php');
+require(dirname(__FILE__) . '/src/Payabbhi/Transfer.php');
 require(dirname(__FILE__) . '/src/Payabbhi/Collection.php');
 require(dirname(__FILE__) . '/src/Payabbhi/Utility.php');
