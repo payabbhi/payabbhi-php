@@ -2,7 +2,7 @@
 
 Changelog for payabbhi-php
 
-## [1.0.3] - 2018-11-16
+## [1.0.3] - 2018-11-19
 ### Added
 - Support for Transfer APIs
 
