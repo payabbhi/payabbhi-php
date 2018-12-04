@@ -88,11 +88,11 @@ Class Invoice extends ApiResource
      *
      * @return Invoice
      */
-    public function cancel($id, $params = null)
+    public function void($id, $params = null)
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        return self::_request(static::classUrl() . '/' . $extn . '/cancel' , "POST", $params);
+        return self::_request(static::classUrl() . '/' . $extn . '/void' , "POST", $params);
     }
 
 
