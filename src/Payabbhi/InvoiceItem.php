@@ -1,5 +1,6 @@
 <?php
 namespace Payabbhi;
+
 use Payabbhi\Util\Util;
 
 /**
@@ -62,8 +63,18 @@ Class InvoiceItem extends ApiResource
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        return self::_request(static::classUrl() . '/' . $extn  , "DELETE", null);
+        return self::_request(static::classUrl() . '/' . $extn, "DELETE", null);
     }
 
-
+    /**
+     * @param array|null $params
+     *
+     * @return Collection of Invoices
+     */
+    public function invoices($id, $params = null)
+    {
+        $id = Util::utf8($id);
+        $extn = urlencode($id);
+        return self::_request(static::classUrl() . '/' . $id . '/invoices', "GET", $params);
+    }
 }
