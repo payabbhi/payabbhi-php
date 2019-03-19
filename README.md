@@ -163,6 +163,10 @@ Refer to [PHP Lib Docs](https://payabbhi.com/docs/api/?php):
 
 Refer to [PHP Lib Docs](https://payabbhi.com/docs/api/?php#transfers)
 
+### Events
+
+Refer to [PHP Lib Docs](https://payabbhi.com/docs/api/?php#events)
+
 
 ## Development
 
