@@ -2,6 +2,10 @@
 
 Changelog for payabbhi-php
 
+## [1.0.4] - 2019-03-20
+### Added
+- Support for Event APIs, Update billing APIs for Invoice and Subscription Enhancement
+
 ## [1.0.3] - 2018-11-19
 ### Added
 - Support for Transfer APIs
