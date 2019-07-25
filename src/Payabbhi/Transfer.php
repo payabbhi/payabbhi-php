@@ -9,11 +9,14 @@ use Payabbhi\Util\Util;
  * @property string $object
  * @property string $description
  * @property string $source_id
- * @property string $recipient_id
+ * @property string $beneficiary_id
  * @property int $amount
  * @property string $currency
  * @property int $fees
  * @property int $gst
+ * @property int $amount_reversed
+ * @property string $settlement_id
+ * @property bool $settled
  * @property mixed $notes
  * @property int $created_at
  *

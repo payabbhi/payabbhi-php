@@ -15,8 +15,9 @@ use Payabbhi\Util\Util;
  * @property int $billing_cycle_count
  * @property int $paid_count
  * @property bool $cancel_at_period_end
- * @property int $due_by_days
+ * @property int $due_at
  * @property int $trial_end_at
+ * @property int $trial_duration
  * @property string $status
  * @property int $current_start_at
  * @property int $current_end_at

@@ -147,6 +147,17 @@ class CurlClient
 
     /**
      * @param mixed $ch
+     * @param string $path
+     */
+    public static function buildPATCHRequest($ch, $path)
+    {
+        $url  = Client::baseUrl() . $path;
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
+    }
+
+    /**
+     * @param mixed $ch
      * @return string $url
      */
     public static function getPath($ch)
@@ -197,6 +208,10 @@ class CurlClient
                 break;
             case "DELETE":
                 self::buildDELETERequest($ch, $path);
+                self::signRequest($ch);
+                break;
+            case "PATCH":
+                self::buildPATCHRequest($ch, $path);
                 self::signRequest($ch);
                 break;
             default:

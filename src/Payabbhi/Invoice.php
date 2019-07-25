@@ -7,22 +7,30 @@ use Payabbhi\Util\Util;
  *
  * @property string $id
  * @property string $object
- * @property int $amount
- * @property string $billing_method
- * @property string $customer_id
  * @property string $currency
+ * @property string $billing_method
  * @property string $description
+ * @property string $status
  * @property int $due_date
  * @property mixed $line_items
  * @property string $notify_by
+ * @property string $customer_notification_by
  * @property int $payment_attempt
- * @property mixed $payments
  * @property string $invoice_no
- * @property string $status
- * @property string $subscription_id
  * @property string $url
  * @property mixed $notes
+ * @property string $place_of_supply
+ * @property int $gross_amount
+ * @property int $tax_amount
+ * @property int $amount
+ * @property string $customer_notes
+ * @property string $terms_conditions
+ * @property string $subscription_id
+ * @property string $customer_id
  * @property int $created_at
+ * @property int $issued_at
+ * @property int $voided_at
+ *
  *
  * @package Payabbhi
  */
