@@ -152,7 +152,12 @@ Class ApiResource extends Resource implements ArrayableInterface
             'invoiceitem',
             'subscription',
             'order',
-            'event');
+            'event',
+            'invoice',
+            'settlement',
+            'payment_link',
+            'virtual_account',
+            'beneficiaryaccount');
     }
 
     protected static function getObjectClass($name)
