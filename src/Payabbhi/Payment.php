@@ -107,8 +107,6 @@ Class Payment extends ApiResource
      */
     public function transfer($params = null)
     {
-        $transfer = new Transfer;
-        $transfers = $transfer->create($this->getObjectIdentifier(), $params);
-        return $transfers;
+        return self::_request(static::instanceUrl($this->getObjectIdentifier()) . "/transfers", "POST", $params);
     }
 }
