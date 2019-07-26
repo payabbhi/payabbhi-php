@@ -117,4 +117,12 @@ Class Payment extends ApiResource
     {
         return self::_request(static::instanceUrl($this->getObjectIdentifier()) . "/transfers", "POST", $params);
     }
+
+    /**
+     * @return Payment with virtual account details
+     */
+     public function virtual_account()
+     {
+       return self::_request(static::instanceUrl($this->getObjectIdentifier()) . "/virtual_account", "GET", null);
+     }
 }
