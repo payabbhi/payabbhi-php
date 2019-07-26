@@ -79,17 +79,4 @@ Class Virtual_Account extends ApiResource
         $extn = urlencode($id);
         return self::_request(static::classUrl() . '/' . $extn, "PATCH", null);
     }
-
-    /**
-     * @param string $id The ID of the Virtual_Account to retrieve details.
-     *
-     * @return Payment
-     */
-     public function details($id)
-     {
-       $id = Util::utf8($id);
-       $extn = urlencode($id);
-       return self::_request('/api/v1/payments/' . $extn . "/virtual_accounts", "GET", null);
-     }
-
 }
