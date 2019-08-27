@@ -6,11 +6,8 @@ namespace Payabbhi;
  *
  * @property string $id
  * @property string $object
- * @property string $status
- * @property string $method
- * @property string $description
- * @property mixed  $notes
- * @property mixed $refunds
+ * @property string $type
+ * @property string $environment
  * @property mixed $data
  * @property int $created_at
  *

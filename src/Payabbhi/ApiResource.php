@@ -97,7 +97,8 @@ Class ApiResource extends Resource implements ArrayableInterface
         $results = array();
         foreach ($values as $k => $v) {
             if ($v instanceof Collection || $v instanceof Order || $v instanceof Payment || $v instanceof Refund
-            || $v instanceof Product || $v instanceof Plan|| $v instanceof Customer || $v instanceof Subscription || $v instanceof Invoice || $v instanceof InvoiceItem || $v instanceof Event) {
+            || $v instanceof Product || $v instanceof Plan|| $v instanceof Customer || $v instanceof Subscription || $v instanceof Invoice || $v instanceof InvoiceItem || $v instanceof Event
+            || $v instanceof Settlement || $v instanceof Payment_Link || $v instanceof Virtual_Account || $v instanceof BeneficiaryAccount || $v instanceof Transfer) {
                 $results[$k] = $v->__toArray(true);
             } elseif (is_array($v)) {
                 $results[$k] = self::convertObjectToArray($v);
@@ -152,7 +153,12 @@ Class ApiResource extends Resource implements ArrayableInterface
             'invoiceitem',
             'subscription',
             'order',
-            'event');
+            'event',
+            'invoice',
+            'settlement',
+            'payment_link',
+            'virtual_account',
+            'beneficiaryaccount');
     }
 
     protected static function getObjectClass($name)

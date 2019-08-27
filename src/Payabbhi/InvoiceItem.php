@@ -9,13 +9,21 @@ use Payabbhi\Util\Util;
  * @property string $id
  * @property string $object
  * @property string $name
- * @property string $description
  * @property int $amount
  * @property string $currency
+ * @property string $description
+ * @property int $unit
  * @property int $quantity
+ * @property int $discount
+ * @property string $hsn_code
+ * @property string $sac_code
+ * @property int $tax_rate
+ * @property int $cess
+ * @property bool $tax_inclusive
+ * @property int $tax_amount
+ * @property int $net_amount
  * @property string $customer_id
- * @property string $invoice_id
- * @property string $subscription_id
+ * @property int $deleted_at
  * @property mixed $notes
  * @property int $created_at
  *
