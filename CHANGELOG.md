@@ -2,7 +2,7 @@
 
 Changelog for payabbhi-php
 
-## [1.0.5] - 2019-07-24
+## [1.0.5] - 2019-08-29
 ### Added
 - Support for Settlement, Payment Link, Virtual Account, Beneficiary Account and Direct Transfer APIs
 
