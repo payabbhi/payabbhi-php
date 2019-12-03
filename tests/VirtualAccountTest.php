@@ -1,15 +1,15 @@
 <?php
 namespace Payabbhi;
-use Payabbhi\Virtual_Account;
+use Payabbhi\VirtualAccount;
 use Payabbhi\Payabbhi;
 use PHPUnit\Framework\TestCase;
 
-class Virtual_AccountTest extends PayabbhiTestCase
+class VirtualAccountTest extends PayabbhiTestCase
 {
         public function testAll()
         {
           $api = self::authorizeFromEnv();
-          $a = $api->virtual_account->all();
+          $a = $api->virtualaccount->all();
           $this->assertTrue(is_int($a->total_count));
           $this->assertTrue(is_string($a->object));
           $this->assertTrue(is_array($a->data));

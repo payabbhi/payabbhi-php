@@ -3,33 +3,38 @@ namespace Payabbhi;
 use Payabbhi\Util\Util;
 
 /**
- * Class Virtual_Account
+ * Class PaymentLink
  *
  * @property string $id
  * @property string $object
- * @property string $status
- * @property int $paid_amount
+ * @property int $amount
  * @property string $customer_id
+ * @property string $name
  * @property string $email
  * @property string $contact_no
- * @property string $order_id
- * @property string $invoice_id
+ * @property string $currency
  * @property string $description
- * @property mixed $collection_methods
- * @property string $notification_method
- * @property string $customer_notification_by
+ * @property int $due_date
  * @property mixed $notes
+ * @property string $notify_by
+ * @property string $customer_notification_by
+ * @property string $payment_attempt
+ * @property string $receipt_no
+ * @property string $status
+ * @property string $url
  * @property int $created_at
  *
  * @package Payabbhi
  */
 
-Class Virtual_Account extends ApiResource
+
+Class PaymentLink extends ApiResource
 {
+
     /**
-     * @param string $id The ID of the Virtual_Account to retrieve.
+     * @param string $id The ID of the PaymentLink to retrieve.
      *
-     * @return Virtual_Account
+     * @return PaymentLink
      */
     public function retrieve($id)
     {
@@ -39,7 +44,7 @@ Class Virtual_Account extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return Collection of Virtual_Accounts
+     * @return Collection of PaymentLinks
      */
     public function all($params = null)
     {
@@ -49,7 +54,7 @@ Class Virtual_Account extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return Collection of Payments
+     * @return Collection of PaymentLinks
      */
     public function payments($id, $params = null)
     {
@@ -59,9 +64,9 @@ Class Virtual_Account extends ApiResource
     }
 
     /**
-     * @param array|null $params.
+     * @param array|null $params
      *
-     * @return Virtual_Account
+     * @return PaymentLink
      */
     public function create($params)
     {
@@ -71,12 +76,13 @@ Class Virtual_Account extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return Virtual_Account
+     * @return PaymentLink
      */
-    public function close($id)
+    public function cancel($id, $params = null)
     {
         $id = Util::utf8($id);
         $extn = urlencode($id);
-        return self::_request(static::classUrl() . '/' . $extn, "PATCH", null);
+        return self::_request(static::classUrl() . '/' . $extn . '/cancel' , "POST", $params);
     }
+
 }

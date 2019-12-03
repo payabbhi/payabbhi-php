@@ -30,6 +30,12 @@ Class ApiResource extends Resource implements ArrayableInterface
     public static function classUrl()
     {
         $base = static::className();
+        if (strcmp($base, "paymentlink") == 0) {
+          $base = "payment_link";
+        }
+        if (strcmp($base, "virtualaccount") == 0) {
+          $base = "virtual_account";
+        }
         return "/api/v1/${base}s";
     }
 
@@ -98,7 +104,7 @@ Class ApiResource extends Resource implements ArrayableInterface
         foreach ($values as $k => $v) {
             if ($v instanceof Collection || $v instanceof Order || $v instanceof Payment || $v instanceof Refund
             || $v instanceof Product || $v instanceof Plan|| $v instanceof Customer || $v instanceof Subscription || $v instanceof Invoice || $v instanceof InvoiceItem || $v instanceof Event
-            || $v instanceof Settlement || $v instanceof Payment_Link || $v instanceof Virtual_Account || $v instanceof BeneficiaryAccount || $v instanceof Transfer) {
+            || $v instanceof Settlement || $v instanceof PaymentLink || $v instanceof VirtualAccount || $v instanceof BeneficiaryAccount || $v instanceof Transfer) {
                 $results[$k] = $v->__toArray(true);
             } elseif (is_array($v)) {
                 $results[$k] = self::convertObjectToArray($v);
@@ -156,8 +162,8 @@ Class ApiResource extends Resource implements ArrayableInterface
             'event',
             'invoice',
             'settlement',
-            'payment_link',
-            'virtual_account',
+            'paymentlink',
+            'virtualaccount',
             'beneficiaryaccount');
     }
 
