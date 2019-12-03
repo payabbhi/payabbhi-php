@@ -2,6 +2,10 @@
 
 Changelog for payabbhi-php
 
+## [1.0.6] - 2019-12-03
+### Added
+- Made code compatible to PSR-4
+
 ## [1.0.5] - 2019-08-29
 ### Added
 - Support for Settlement, Payment Link, Virtual Account, Beneficiary Account and Direct Transfer APIs
