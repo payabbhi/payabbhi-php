@@ -4,7 +4,7 @@ Changelog for payabbhi-php
 
 ## [1.0.6] - 2019-12-03
 ### Added
-- Made code compatible to PSR-4
+- Renamed Payment Link and Virtual Account
 
 ## [1.0.5] - 2019-08-29
 ### Added
