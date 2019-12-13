@@ -1,5 +1,6 @@
 <?php
 namespace Payabbhi;
+use Payabbhi\Util\Util;
 
 /**
  * Class Payment
@@ -119,10 +120,14 @@ Class Payment extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the payment to retrieve.
+     * @param array|null $params Filter Params
+     * 
      * @return Payment with virtual account details
      */
-     public function virtual_account()
+     public function virtual_account($id, $params = null)
      {
-       return self::_request(static::instanceUrl($this->getObjectIdentifier()) . "/virtual_account", "GET", null);
+        $id = Util::utf8($id);
+        return self::_request(static::classUrl() . '/' . $id . '/virtual_account' , "GET", $params);
      }
 }
