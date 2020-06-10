@@ -41,5 +41,7 @@ require(dirname(__FILE__) . '/src/Payabbhi/Settlement.php');
 require(dirname(__FILE__) . '/src/Payabbhi/PaymentLink.php');
 require(dirname(__FILE__) . '/src/Payabbhi/VirtualAccount.php');
 require(dirname(__FILE__) . '/src/Payabbhi/BeneficiaryAccount.php');
+require(dirname(__FILE__) . '/src/Payabbhi/Payout.php');
+require(dirname(__FILE__) . '/src/Payabbhi/RemittanceAccount.php');
 require(dirname(__FILE__) . '/src/Payabbhi/Collection.php');
 require(dirname(__FILE__) . '/src/Payabbhi/Utility.php');

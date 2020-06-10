@@ -2,6 +2,10 @@
 
 Changelog for payabbhi-php
 
+## [1.0.7] - 2020-06-10
+### Added
+- Support for Payout, Remittance Account APIs
+
 ## [1.0.6] - 2019-12-03
 ### Added
 - Renamed Payment Link and Virtual Account
